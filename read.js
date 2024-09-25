@@ -14,6 +14,7 @@ module.exports = function (RED) {
         console.log(`${reader.reader.name}  card detected`, card);
         this.status({ fill: "green", shape: "dot", text: "Card detected" });
         let msg = {};
+        msg.payload = {};
         msg.payload.card = card;
         msg.payload.action = 'detected';
         this.send(msg);
@@ -22,6 +23,7 @@ module.exports = function (RED) {
         console.log(`${reader.reader.name}  card removed`, card);
         this.status({ fill: "green", shape: "dot", text: "Card gone" });
         let msg = {};
+        msg.payload = {};
         msg.payload.card = card;
         msg.payload.action = 'removed';
         this.send(msg);
