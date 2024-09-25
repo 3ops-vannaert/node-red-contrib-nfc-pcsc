@@ -1,12 +1,13 @@
-const { NFC } = require("nfc-pcsc");
 
-const nfc = new NFC();
 
 module.exports = function (RED) {
   function readCard(config) {
     RED.nodes.createNode(this, config);
     this.status({ fill: "blue", shape: "ring", text: "Starting..." });
-
+    
+    const { NFC } = require("nfc-pcsc");
+    const nfc = new NFC();
+    
     nfc.on("reader", (reader) => {
       this.status({ fill: "green", shape: "dot", text: reader.reader.name });
       reader.on("card", (card) => {
@@ -33,11 +34,13 @@ module.exports = function (RED) {
         });
       });
     });
+
+    nfc.on("error", (err) => {
+      console.log("an error occurred", err);
+      this.status({ fill: "red", shape: "dot", text: "error" });
+    });
   }
   RED.nodes.registerType("read-card", readCard);
 };
 
-nfc.on("error", (err) => {
-  console.log("an error occurred", err);
-  this.status({ fill: "red", shape: "dot", text: "error" });
-});
+
