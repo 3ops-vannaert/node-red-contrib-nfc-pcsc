@@ -1,0 +1,20 @@
+{
+  "name": "node-red-contrib-nfc-pcsc",
+  "version": "1.0.0",
+  "description": "This is a Node-Red Module for reading and writing NFC cards with the AC122U. Based on Pokusew's npm module nfc-pcsc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "read-card": "read.js"
+    }
+  },
+  "keywords": [],
+  "author": "vannaert",
+  "license": "MIT",
+  "dependencies": {
+	   "nfc-pcsc": "git+https://github.com/3ops-vannaert/nfc-pcsc.git#master"
+  }
+}
