@@ -14,12 +14,17 @@ module.exports = function (RED) {
         console.log(`${reader.reader.name}  card detected`, card);
         this.status({ fill: "green", shape: "dot", text: "Card detected" });
         let msg = {};
-        msg.payload = card;
+        msg.payload.card = card;
+        msg.payload.action = 'detected';
         this.send(msg);
       });
       reader.on("card.off", (card) => {
         console.log(`${reader.reader.name}  card removed`, card);
         this.status({ fill: "green", shape: "dot", text: "Card gone" });
+        let msg = {};
+        msg.payload.card = card;
+        msg.payload.action = 'removed';
+        this.send(msg);
       });
       reader.on("error", (err) => {
         console.log(`${reader.reader.name}  an error occurred`, err);
