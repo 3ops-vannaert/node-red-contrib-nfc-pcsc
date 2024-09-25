@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "vannaert",
   "license": "MIT",
-  "dependenciesold": {
-	   "nfc-pcsc": "git+https://github.com/3ops-vannaert/nfc-pcsc.git#master"
+  "dependencies": {
+	  "nfc-pcsc": "^0.8.1"
   }
 }
